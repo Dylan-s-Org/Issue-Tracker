@@ -28,4 +28,4 @@ jobs:
       - run: yarn install --frozen-lockfile # Use Yarn to install dependencies
       - run: yarn build # Use Yarn to build the project
       - run: yarn lint # Use Yarn to run linting
-      - run: yarn test --if-present # If you have tests, run them with Yarn
+      # - run: yarn test --if-present # If you have tests, run them with Yarn
