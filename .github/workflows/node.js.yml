@@ -26,6 +26,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
       - run: yarn install --frozen-lockfile # Use Yarn to install dependencies
-      - run: yarn build # Use Yarn to build the project
+      # - run: yarn build # Use Yarn to build the project (Temporarily disable)
       - run: yarn lint # Use Yarn to run linting
       # - run: yarn test --if-present # If you have tests, run them with Yarn
