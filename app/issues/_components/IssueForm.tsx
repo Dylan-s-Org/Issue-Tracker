@@ -1,25 +1,25 @@
 "use client";
 
-import { Button, Callout, Text, TextField } from "@radix-ui/themes";
-import { useForm, Controller } from "react-hook-form";
+import ErrorMessage from "@/app/components/ErrorMessage";
+import Spinner from "@/app/components/Spinner";
+import { issueSchema } from "@/app/validationSchemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Issue } from "@prisma/client";
+import { Button, Callout, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Controller, useForm } from "react-hook-form";
+import SimpleMDE from "react-simplemde-editor";
 import { z } from "zod";
-import ErrorMessage from "@/app/components/ErrorMessage";
-import Spinner from "@/app/components/Spinner";
-import { issueSchema } from "@/app/validationSchemas";
-import dynamic from "next/dynamic";
-import { Issue } from "@prisma/client";
 
 type IssueFormData = z.infer<typeof issueSchema>;
 
-const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
-  // https://nextjs.org/docs/messages/prerender-error#5-disable-server-side-rendering-for-components-using-browser-apis
-  ssr: false,
-});
+// const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
+//   // https://nextjs.org/docs/messages/prerender-error#5-disable-server-side-rendering-for-components-using-browser-apis
+//   ssr: false,
+// });
 
 const IssueForm = ({ issue }: { issue?: Issue }) => {
   const router = useRouter();
